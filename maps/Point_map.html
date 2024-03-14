@@ -1,0 +1,167 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Using Esri Icon Fonts with map graphics | Sample | ArcGIS Maps SDK for JavaScript 4.29</title>
+ 
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+
+    <script src="https://js.arcgis.com/4.29/"></script>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <script>
+      require([
+        "esri/Map",
+        "esri/PopupTemplate",
+        "esri/views/MapView",
+        "esri/Graphic",
+        "esri/geometry/Point"
+      ], (Map, PopupTemplate, MapView, Graphic, Point) => {
+        const map = new Map({
+          basemap: "gray-vector"
+        });
+
+        const view = new MapView({
+          center: [-97.63, 38.34],
+          container: "viewDiv",
+          map: map,
+          zoom: 3
+        });
+
+        /*************************
+         * Create point graphics
+         //https://developers.arcgis.com/javascript/latest/sample-code/styling-icon-fonts/
+         *************************/
+
+        // First create a point geometry
+        const point1 = new Point({
+          longitude: -122.311510,
+          latitude:  41.314542
+         
+        });
+
+        // Then create another point geometry
+        const point2 = new Point({
+          longitude: -69.526123,
+          latitude: -15.765570
+        });
+
+        // Then create another point geometry
+        const point3 = new Point({
+          longitude: 131.035431,
+          latitude: -25.344490
+        
+        });
+
+        // Then create another point geometry
+        const point4 = new Point({
+          longitude: -2.72075,
+          latitude: 51.14745
+  
+        });
+        
+             // Then create another point geometry
+        const point5 = new Point({
+          longitude: 31.1342,
+          latitude: 29.9792
+          
+        });
+        
+             // Then create another point geometry
+        const point6 = new Point({
+          longitude: 35.243889,
+          latitude: 31.776112
+          //31.776112, 35.243889
+        });
+
+        // Then create a another point geometry
+        const point7 = new Point({
+          longitude: 81.3119,
+          latitude: 31.0675
+    
+        });
+        
+            const point8 = new Point({
+          longitude: -1.82611,
+          latitude: 51.17889
+           
+        });
+
+        // Create a symbol for drawing the point
+        const textSymbol = {
+          type: "text", // autocasts as new TextSymbol()
+          color: "#7A003C",
+          text: "", // esri-icon-map-pin
+          font: {
+            // autocasts as new Font()
+            size: 36,
+            family: "CalciteWebCoreIcons"
+          }
+        };
+
+        // Create a graphic and add the geometry and symbol to it
+        const pointGraphic1 = new Graphic({
+          geometry: point1,
+          symbol: textSymbol
+        });
+
+        // Create another graphic and add the geometry and symbol to it
+        const pointGraphic2 = new Graphic({
+          geometry: point2,
+          symbol: textSymbol
+        });
+
+        // Create another graphic and add the geometry and symbol to it
+        const pointGraphic3 = new Graphic({
+          geometry: point3,
+          symbol: textSymbol
+        });
+
+        // Create another graphic and add the geometry and symbol to it
+        const pointGraphic4 = new Graphic({
+          geometry: point4,
+          symbol: textSymbol
+        });
+
+        // Create one last graphic and add the geometry and symbol to it
+        const pointGraphic5 = new Graphic({
+          geometry: point5,
+          symbol: textSymbol
+        });
+        
+                const pointGraphic6 = new Graphic({
+          geometry: point6,
+          symbol: textSymbol
+        });
+
+                const pointGraphic7 = new Graphic({
+          geometry: point7,
+          symbol: textSymbol
+        });
+                const pointGraphic8 = new Graphic({
+          geometry: point8,
+          symbol: textSymbol
+        });
+
+        // Add the graphics to the view's graphics layer
+        view.graphics.addMany([pointGraphic1, pointGraphic2, pointGraphic3, pointGraphic4, pointGraphic5,  pointGraphic6, pointGraphic7,pointGraphic8]);
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
